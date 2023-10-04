@@ -1,0 +1,23 @@
+name: Generate Webhooks
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  success:
+    runs-on: ubuntu-latest
+    name: Success
+    strategy:
+      matrix:
+        os: [ 0,1,2,3,4 ]
+    steps:
+      - name: Exit 0
+        run: exit 0
+  failure:
+    runs-on: ubuntu-latest
+    name: Failure
+    strategy:
+      matrix:
+        os: [ 0,1,2,3,4 ]
+    steps:
+      - name: Exit 1
+        run: exit 1

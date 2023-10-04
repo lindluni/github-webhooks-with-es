@@ -1,0 +1,22 @@
+{
+  "name": "github-reporting",
+  "version": "0.0.1",
+  "description": "A webhook server for forwarding GitHub webhooks to OpenSearch",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --dev && node_modules/.bin/ncc build index.js",
+    "docker": "npm run docker:build && npm run docker:push",
+    "docker:build": "docker build -t ghcr.io/oss-tooling/github-reporting:0.0.1 .",
+    "docker:push": "docker push ghcr.io/oss-tooling/github-reporting:0.0.1",
+    "export-objects": "node opensearch/export"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.10.0",
+    "axios": "^1.5.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.0"
+  }
+}
